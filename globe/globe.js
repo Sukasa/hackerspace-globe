@@ -178,7 +178,7 @@ DAT.Globe = function(container, colorFn) {
       overRenderer = false;
     }, false);
 	
-	setInterval(doRotate, 500);
+	setInterval(doRotate, 50);
   }
 
   addData = function(data, opts) {
@@ -357,7 +357,7 @@ DAT.Globe = function(container, colorFn) {
   }
 
   function doRotate() {
-	target.x += 0.5 * distance/1000;  
+	target.x += 0.0005 * distance/1000;  
   }
   
   function animate() {
