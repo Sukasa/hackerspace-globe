@@ -162,21 +162,7 @@ DAT.Globe = function(container, colorFn) {
 
     container.appendChild(renderer.domElement);
 
-    container.addEventListener('mousedown', onMouseDown, false);
-
-    container.addEventListener('mousewheel', onMouseWheel, false);
-
-    document.addEventListener('keydown', onDocumentKeyDown, false);
-
     window.addEventListener('resize', onWindowResize, false);
-
-    container.addEventListener('mouseover', function() {
-      overRenderer = true;
-    }, false);
-
-    container.addEventListener('mouseout', function() {
-      overRenderer = false;
-    }, false);
 	
 	setInterval(doRotate, 50);
 	target.y -= 0.25
@@ -358,7 +344,7 @@ DAT.Globe = function(container, colorFn) {
   }
 
   function doRotate() {
-	target.x += 0.002 * distance/1000;  
+	target.x += 0.0035 * distance/1000;  
   }
   
   function animate() {
