@@ -357,7 +357,7 @@ DAT.Globe = function(container, colorFn) {
   }
 
   function doRotate() {
-	target.x += 0.5 * zoomDamp;  
+	target.x += 0.5 * distance/1000;  
   }
   
   function animate() {
