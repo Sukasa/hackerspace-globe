@@ -179,7 +179,7 @@ DAT.Globe = function(container, colorFn) {
     }, false);
 	
 	setInterval(doRotate, 50);
-	target.y -= 0.5
+	target.y -= 0.25
   }
 
   addData = function(data, opts) {
