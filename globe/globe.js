@@ -162,21 +162,11 @@ DAT.Globe = function(container, colorFn) {
 
     container.appendChild(renderer.domElement);
 
-    container.addEventListener('mousedown', onMouseDown, false);
-
-    container.addEventListener('mousewheel', onMouseWheel, false);
-
-    document.addEventListener('keydown', onDocumentKeyDown, false);
-
     window.addEventListener('resize', onWindowResize, false);
-
-    container.addEventListener('mouseover', function() {
-      overRenderer = true;
-    }, false);
-
-    container.addEventListener('mouseout', function() {
-      overRenderer = false;
-    }, false);
+	
+	setInterval(doRotate, 50);
+	target.y -= 0.25
+	zoom(200);
   }
 
   addData = function(data, opts) {
@@ -354,6 +344,10 @@ DAT.Globe = function(container, colorFn) {
     distanceTarget = distanceTarget < 350 ? 350 : distanceTarget;
   }
 
+  function doRotate() {
+	target.x += 0.0035 * distance/1000;  
+  }
+  
   function animate() {
     requestAnimationFrame(animate);
     render();
@@ -387,6 +381,9 @@ DAT.Globe = function(container, colorFn) {
 
   this.__defineSetter__('time', function(t) {
     var validMorphs = [];
+	if (!this.points || !this.points.morphTargetInfluences)
+		return this;
+	
     var morphDict = this.points.morphTargetDictionary;
     for(var k in morphDict) {
       if(k.indexOf('morphPadding') < 0) {
@@ -403,7 +400,7 @@ DAT.Globe = function(container, colorFn) {
     var lastIndex = index - 1;
     var leftover = scaledt - index;
     if (lastIndex >= 0) {
-      this.points.morphTargetInfluences[lastIndex] = 1 - leftover;
+		this.points.morphTargetInfluences[lastIndex] = 1 - leftover;
     }
     this.points.morphTargetInfluences[index] = leftover;
     this._time = t;

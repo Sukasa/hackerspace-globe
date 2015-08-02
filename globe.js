@@ -48,5 +48,7 @@ $(function() {
         }
     });
 
+	
+	setTimeout(function() {document.location.reload();}, 1800000);
     // TODO: Figure out the source of the errors in the console.
 });
