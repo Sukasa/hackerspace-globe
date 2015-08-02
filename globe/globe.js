@@ -394,6 +394,9 @@ DAT.Globe = function(container, colorFn) {
 
   this.__defineSetter__('time', function(t) {
     var validMorphs = [];
+	if (!this.points)
+		return this;
+	
     var morphDict = this.points.morphTargetDictionary;
     for(var k in morphDict) {
       if(k.indexOf('morphPadding') < 0) {
@@ -410,7 +413,8 @@ DAT.Globe = function(container, colorFn) {
     var lastIndex = index - 1;
     var leftover = scaledt - index;
     if (lastIndex >= 0) {
-      this.points.morphTargetInfluences[lastIndex] = 1 - leftover;
+	  if (this.points.morphTargetInfluences)
+		this.points.morphTargetInfluences[lastIndex] = 1 - leftover;
     }
     this.points.morphTargetInfluences[index] = leftover;
     this._time = t;
