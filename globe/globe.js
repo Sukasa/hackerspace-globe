@@ -177,6 +177,8 @@ DAT.Globe = function(container, colorFn) {
     container.addEventListener('mouseout', function() {
       overRenderer = false;
     }, false);
+	
+	setInterval(doRotate, 500);
   }
 
   addData = function(data, opts) {
@@ -354,6 +356,10 @@ DAT.Globe = function(container, colorFn) {
     distanceTarget = distanceTarget < 350 ? 350 : distanceTarget;
   }
 
+  function doRotate() {
+	target.x += 0.5 * zoomDamp;  
+  }
+  
   function animate() {
     requestAnimationFrame(animate);
     render();
