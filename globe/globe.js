@@ -166,8 +166,7 @@ DAT.Globe = function(container, colorFn) {
 	
 	setInterval(doRotate, 50);
 	target.y -= 0.25
-	zoom(100);
-	zoom(100);
+	zoom(500);
   }
 
   addData = function(data, opts) {
