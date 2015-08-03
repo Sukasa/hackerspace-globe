@@ -81,7 +81,7 @@ DAT.Globe = function(container, colorFn) {
       target = { x: Math.PI*3/2, y: Math.PI / 6.0 },
       targetOnDown = { x: 0, y: 0 };
 
-  var distance = 100000, distanceTarget = 100000;
+  var distance = 999800, distanceTarget = 999800;
   var padding = 40;
   var PI_HALF = Math.PI / 2;
 
@@ -166,7 +166,6 @@ DAT.Globe = function(container, colorFn) {
 	
 	setInterval(doRotate, 50);
 	target.y -= 0.25
-	zoom(500);
   }
 
   addData = function(data, opts) {
